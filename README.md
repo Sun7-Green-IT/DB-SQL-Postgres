@@ -11,23 +11,23 @@ CREATE TABLE "Users" (
     "Lastname" string   NOT NULL,
     "Birthday" date   NOT NULL,
     "Email" string   NOT NULL,
+    "RolesID" int NOT NULL,
     CONSTRAINT "pk_Users" PRIMARY KEY (
         "UsersID"
      )
 );
 
 CREATE TABLE "Roles" (
-    "RolesID" uuid   NOT NULL,
-    "UsersID" uuid   NOT NULL,
-    "Level" int   NOT NULL,
+    "RolesID" int   NOT NULL,
+    "Role" text   NOT NULL,
     CONSTRAINT "pk_Roles" PRIMARY KEY (
         "RolesID"
      )
 );
 
-ALTER TABLE "Roles" ADD CONSTRAINT "fk_Roles_UsersID" FOREIGN KEY("UsersID")
-REFERENCES "Users" ("UsersID");
+ALTER TABLE "Users" ADD CONSTRAINT "fk_Roles_UsersID" FOREIGN KEY("RolesID")
+REFERENCES "Roles" ("RolesID");
 
 CREATE INDEX "idx_Users_Firstname"
-ON "Users" ("Firstname");
+ON "Users" ("Email");
 ```
