@@ -1,10 +1,48 @@
 # DB-SQL-Postgres
 
+## Development with Docker
 
+Start docker container(s) :
 
-### Creation des tables
-
+```Shell Session
+$ make start
 ```
+
+Stop docker container(s) :
+
+```Shell Session
+$ make stop
+```
+
+Need help with `make` ?
+
+```Shell Session
+$ make help
+```
+
+**Access database with thick client**
+
+```bash
+Host: localhost
+Database: green_it
+Port: 5432
+User: green_it
+Password: p@ssword
+```
+
+**Access database with Adminer**
+Uncoment adminer service in docker-compose.yml and start containers.
+
+```bash
+Server: db
+User: green_it
+Password: p@ssword
+Database: green_it
+```
+
+### Table creation
+
+```SQL
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE users (
@@ -21,7 +59,7 @@ CREATE TABLE users (
 CREATE TABLE roles (
     RolesID int NOT NULL,
     Role varchar(25)  NOT NULL,
-    PRIMARY KEY (RolesID)    
+    PRIMARY KEY (RolesID)
 );
 
 CREATE INDEX "idx_Users_Firstname"

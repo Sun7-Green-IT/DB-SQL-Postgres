@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: sun7-green-it/postgres
+    build: .
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: green_it
+      POSTGRES_USER: green_it
+      POSTGRES_PASSWORD: p@ssword
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
