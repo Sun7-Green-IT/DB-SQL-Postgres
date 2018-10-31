@@ -42,6 +42,8 @@ Database: green_it
 
 ### Table creation
 
+Starting containers will automatically create tables.
+
 ```SQL
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
