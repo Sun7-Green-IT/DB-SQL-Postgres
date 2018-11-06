@@ -2,11 +2,12 @@ version: '3.1'
 
 services:
   db:
-    image: sun7-green-it/postgres
-    build: .
+    image: postgres:alpine
     restart: always
     ports:
       - '5432:5432'
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_DB: green_it
       POSTGRES_USER: green_it
