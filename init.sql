@@ -1,21 +1,23 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE roles (
-    RolesID int NOT NULL,
-    Role varchar(25)  NOT NULL,
-    PRIMARY KEY (RolesID)
+CREATE TABLE "role" (
+    role_id uuid DEFAULT uuid_generate_v4 (),
+    name varchar(25)  NOT NULL,
+    createdAt date NOT NULL DEFAULT CURRENT_DATE,
+    PRIMARY KEY (role_id)
 );
 
-CREATE TABLE users (
-    UsersID uuid DEFAULT uuid_generate_v4 (),
-    Firstname varchar(25)  NOT NULL,
-    Lastname varchar(25)   NOT NULL,
-    Birthday date   NOT NULL,
+CREATE TABLE "user" (
+    user_id uuid DEFAULT uuid_generate_v4 (),
+    firstname varchar(25)  NOT NULL,
+    lastname varchar(25)   NOT NULL,
+    birthday date   NOT NULL,
     email varchar(50)  NOT NULL,
-    RolesID int NOT NULL,
-    PRIMARY KEY (UsersID),
-    FOREIGN KEY (RolesID) REFERENCES roles(RolesID)
+    role_id uuid NOT NULL,
+    createdAt date NOT NULL DEFAULT CURRENT_DATE,
+    PRIMARY KEY (user_id),
+    FOREIGN KEY (role_id) REFERENCES role(role_id)
 );
 
-CREATE INDEX "idx_Users_Firstname"
-ON users ("email");
+CREATE INDEX "idx_user_firstname"
+ON user ("email");
