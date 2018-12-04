@@ -34,7 +34,7 @@ launch:
 .PHONY: build launch
 
 
-pre: .env docker-compose.yml
+pre: docker-compose.yml
 
 docker-compose.yml: docker-compose.yml.dist
 	@if [ -f docker-compose.yml ]; \
@@ -43,13 +43,4 @@ docker-compose.yml: docker-compose.yml.dist
 	else\
 		echo cp docker-compose.yml.dist docker-compose.yml;\
 		cp docker-compose.yml.dist docker-compose.yml;\
-	fi
-
-.env: .env.dist
-	@if [ -f .env ]; \
-	then\
-		echo '.env already exists';\
-	else\
-		echo cp .env.dist .env;\
-		cp .env.dist .env;\
 	fi
