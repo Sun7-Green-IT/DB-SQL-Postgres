@@ -3,7 +3,7 @@ version: '3.7'
 services:
   db:
     image: sylvaindns/pg_green_it
-    # build: .
+    build: .
     restart: always
     ports:
       - '5432:5432'
