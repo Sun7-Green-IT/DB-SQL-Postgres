@@ -66,6 +66,6 @@ CREATE TABLE "user" (
     FOREIGN KEY (role_id) REFERENCES role(role_id)
 );
 
-CREATE INDEX "idx_user_email"
-ON user ("email");
+CREATE INDEX "idx_user_user_id"
+ON "user" ("user_id", "role_id");
 ```
